@@ -7,7 +7,9 @@ class IndexController
         //Creamos una instancia de nuestro mini motor de plantillas
         $this->views = new View();
     }
- 
-    
+
+    public function render(){
+        $this->views->show('login.php', []);
+    }   
 }
 ?>

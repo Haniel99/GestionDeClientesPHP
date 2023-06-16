@@ -3,18 +3,18 @@ class View
 {
     function __construct()
     {
-        echo "vista";
     }
  
     public function show($name, $vars = array())
     {
-        echo "Muestra vista";
+       //Traemos una instancia de nuestra clase de configuracion.
+       $config = Config::singleton();
+ 
+       //Armamos la ruta a la plantilla
+       $path = $config->get('viewsFolder') . $name;
+       include($path);
     }
 
 }
-/*
- El uso es bastante sencillo:
- $vista = new View();
- $vista->show('listado.php', array("nombre" => "Juan"));
-*/
+
 ?>
