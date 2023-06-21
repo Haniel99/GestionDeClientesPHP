@@ -5,7 +5,7 @@ class AdminController{
     private $config;
     public function __construct()
     {
-        $config = Config::singleton();
+        $this->config = Config::singleton();
         $this->views = new View();
     }
 

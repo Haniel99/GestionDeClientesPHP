@@ -4,5 +4,8 @@
     },
     {
         "name": "admin"
+    },
+    {
+        "name": "index"
     }
 ]

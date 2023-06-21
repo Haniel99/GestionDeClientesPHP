@@ -13,7 +13,7 @@ class FrontController
     {
         $this->setUrl();
         if (!$this->existUrl()) {
-            echo "Error";
+            echo "Sitio no enontrado";
         };
     }
 
@@ -32,10 +32,11 @@ class FrontController
     /*funcion que verifica si la peticion existe*/
     protected function existUrl()
     {
+        //  usua/sas/Sasa
         require "view.php";
         require "Config.php";
         require "utils/config.php";
-        if (empty($this->url[0])) {
+        if (empty($this->url[0])) { //es vacio
             require "./controllers/IndexController.php"; //Llamar a controlador de la pagina inicial
             $this->fileController = new IndexController();
             $this->fileController->render();
@@ -54,6 +55,7 @@ class FrontController
             $controller->render();
             return true;
         }
+        //  
         if (method_exists($controller, $this->url[1])) {
             $controller->{$this->url[1]}();
             return true;

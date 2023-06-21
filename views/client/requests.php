@@ -7,5 +7,6 @@
 </head>
 <body>
     <h2>Consulta o reclamo</h2>
+    <a href="<?php $config->get('URL')?>">link</a>
 </body>
 </html>

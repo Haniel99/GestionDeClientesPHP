@@ -9,11 +9,13 @@
     <main>
         
     <div>
-        <form action="" method="POST">
+        <form action="http://localhost/GestionDeClientesPHP/ClientController/sendDatasTickets" method="POST">
             <div>
                 <label for="username">Nombre de usuario</label>
                 <input type="text" name="username" id="username">
+                <button type="submit">enviar</button>
             </div>
+            
         </form>
     </div>
     </main>

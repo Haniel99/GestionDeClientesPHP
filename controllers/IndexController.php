@@ -11,5 +11,8 @@ class IndexController
     public function render(){
         $this->views->show('login.php', []);
     }   
+    public function ss(){
+        echo "ss";
+    }
 }
 ?>
