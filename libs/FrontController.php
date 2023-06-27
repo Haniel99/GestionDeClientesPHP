@@ -42,7 +42,7 @@ class FrontController
             $this->fileController->render();
             return true;
         }
-        if (!$this->seachFile(strtolower($this->url[0]))) {
+        if (!$this->searchFile(strtolower($this->url[0]))) {
             return false;
         }
         if (!file_exists($this->nameUrl)) {
@@ -65,7 +65,7 @@ class FrontController
     }
 
     /*Busca la direccion de la pagina*/
-    protected function seachFile($seach)
+    protected function searchFile($seach)
     {
         $string = file_get_contents('utils/paths.json');
         $json = json_decode($string, true);

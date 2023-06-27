@@ -1,6 +1,6 @@
 <?php
 class MySql {
-    private $conexion;
+    private $mysqli;
 
     public function __construct()
     {
@@ -11,14 +11,15 @@ class MySql {
         $dbuser = $config->get('dbuser');
         //Creamos la conexion
         try {
-            $this->conexion = new mysqli($dbhost, $dbuser, $dbpass, $dbname);      
+            $this->mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname); 
+            echo "Connecting to the data base is ssuccefully";
         } catch (\Throwable $th) {
             echo "Error connecting to the database";
         }
     }
     /*funcion para las consultas y operaciones DLM*/
     public function query($sql){
-        return $this->conexion->query($sql);
+        return $this->mysqli->query($sql);
     }
 
 }

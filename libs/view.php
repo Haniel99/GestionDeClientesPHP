@@ -1,6 +1,7 @@
 <?php
 class View
 {
+    private $config;
     function __construct()
     {
     }
@@ -8,10 +9,10 @@ class View
     public function show($name, $vars = array())
     {
        //Traemos una instancia de nuestra clase de configuracion.
-       $config = Config::singleton();
+       $this->config = Config::singleton();
  
        //Armamos la ruta a la plantilla
-       $path = $config->get('viewsFolder') . $name;
+       $path = $this->config->get('viewsFolder') . $name;
        include($path);
     }
 
