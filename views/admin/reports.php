@@ -8,11 +8,7 @@
 </head>
 
 <body>
-    <main class="h-2">
-        <div>
-        <a href="<?php echo $config->get('URL') ?>">link</a>
-        </div>
-    </main>
+    
 </body>
 
 </html>
