@@ -7,7 +7,7 @@
 </head>
 <body>
     <main>
-        <a class="" href="http://localhost/GestionDeClientesPHP/ClientController/sendDatasTickets">Ingresar ticket</a>
+        <a class="" href="http://localhost/GestionDeClientesPHP/client/">Ingresar ticket</a>
 
     </main>
 </body>

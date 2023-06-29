@@ -48,9 +48,8 @@ class TicketController
             header("Location: " . $this->config->get('URL') . "client");
             exit();
         }
-        
-        //Validar datos 
-        // Crear el objeto
+         
+        // Crea el arreglo
         $data = [
             'motivo' => $motivo,
             'nombre' => $nombre,
@@ -72,9 +71,19 @@ class TicketController
         }
     }
 
-    public function reviewRequest()
+    public function reviewQueries()
     {
+        $model = new TicketModel();
+        $res = $model->getQueries();
+        $this->views->show('admin/consultas.php', $res);
     }
+    public function reviewClaims()
+    {
+        $model = new TicketModel();
+        $res = $model->getClaims();
+        $this->views->show('admin/reclamos.php', $res);
+    }
+
 
     public function selectTicket()
     {
