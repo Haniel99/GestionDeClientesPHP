@@ -14,7 +14,7 @@ class MySql {
             $this->mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname); 
             //echo "Connecting to the data base is ssuccefully";
         } catch (\Throwable $th) {
-            echo "Error connecting to the database";
+            echo "";
         }
     }
     /*funcion para las consultas y operaciones DLM*/
