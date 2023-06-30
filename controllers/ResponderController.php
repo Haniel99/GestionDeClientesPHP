@@ -1,6 +1,6 @@
 <?php 
 
-class AdminController{
+class ResponderController{
     private $views;
     private $config;
     public function __construct()
