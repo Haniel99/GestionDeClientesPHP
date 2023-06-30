@@ -12,7 +12,7 @@ class MySql {
         //Creamos la conexion
         try {
             $this->mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname); 
-            echo "Connecting to the data base is ssuccefully";
+            //echo "Connecting to the data base is ssuccefully";
         } catch (\Throwable $th) {
             echo "Error connecting to the database";
         }

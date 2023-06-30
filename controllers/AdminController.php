@@ -12,7 +12,7 @@ class AdminController{
     public function render(){
         require "./models/AdminModel.php";
         $model = new AdminModel();
-        $this->views->show('admin/reports.php', []);
+        $this->views->show('admin/respuestas.php', []);
     }
 
 }
