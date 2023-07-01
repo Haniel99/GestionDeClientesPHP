@@ -42,7 +42,7 @@
                         <tr>
                         <td class="p-5 px-10 text-xl border border-slate-600 text-gray-500 font-sans"><?php echo $value['motivo'] ?></td>
                         <td class="p-5 px-10 text-xl border border-slate-600 text-gray-500 font-sans"><?php echo $value['estado'] ?></td>
-                        <td class="p-5  px-10 text-xl border border-slate-600 text-gray-500 font-sans"><button class="rounded w-full text-violet-50 p-4 bg-violet-800">ver detalles</button></td>
+                        <td class="p-5  px-10 text-xl border border-slate-600 text-gray-500 font-sans"><a href="http://localhost/GestionDeClientesPHP/ticket/selectTicket?ticket_id=<?php echo $value['ticket_id'];?>" class="rounded w-full text-violet-50 p-4 bg-violet-800">ver detalles</a></td>
                     </tr>
                         <?php }?>
                 </tbody>

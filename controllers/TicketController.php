@@ -14,6 +14,7 @@ class TicketController
 
     public function render()
     {
+        $this->views->show('requests.php', []);
     }
     public function sendDatasTickets()
     {
@@ -35,7 +36,7 @@ class TicketController
             header("Location: " . $this->config->get('URL') . "client");
             exit(); // Terminar la ejecución del script después de redirigir
         }
-        
+
         $motivo = $_POST['motivo'];
         $nombre = $_POST['nombre'];
         $telefono = $_POST['telefono'];
@@ -48,7 +49,7 @@ class TicketController
             header("Location: " . $this->config->get('URL') . "client");
             exit();
         }
-         
+
         // Crea el arreglo
         $data = [
             'motivo' => $motivo,
@@ -65,9 +66,9 @@ class TicketController
         $model = new TicketModel();
         $res = $model->saveTicket($data);
         if ($res) {
-            header("Location:" . $this->config->get('URL') . "client?alert=&sad3A");
-        }else{
-            header("Location:" . $this->config->get('URL') . "client?alert=$31dd3");
+            header("Location:" . $this->config->get('URL') . "ticket?alert=&sad3A");
+        } else {
+            header("Location:" . $this->config->get('URL') . "ticket?alert=$31dd3");
         }
     }
 
@@ -75,23 +76,56 @@ class TicketController
     {
         $model = new TicketModel();
         $res = $model->getQueries();
-        $this->views->show('admin/consultas.php', $res);
+        $this->views->show('consultas.php', $res);
     }
     public function reviewClaims()
     {
         $model = new TicketModel();
         $res = $model->getClaims();
-        $this->views->show('admin/reclamos.php', $res);
+        $this->views->show('reclamos.php', $res);
     }
 
 
     public function selectTicket()
     {
+        //Verifica si existe el id del ticket
+        if (!isset($_GET['ticket_id']) || empty($_GET['ticket_id'])) {
+            echo "it don't exists";
+        } else {
+            //Obtener id del ticket
+            $ticketId = $_GET['ticket_id'];
+            $model = new TicketModel();
+            $res = $model->getTicketData($ticketId);
+            if($res['status']){
+                $this->views->show('respuestas.php', $res['response']);
+            }else{
+                echo 'error en la base de datos';
+            }  
+        }
     }
 
-    public function responseTicket()
+    public function answerTicket()
     {
+        //Verifica si existe id
+        if(!isset($_GET['ticketId']) || !isset($_GET['equipoId']) || empty($_GET['equipoId']) || empty($_GET['ticketId'])){
+            echo 'No existe identificadores';
+        }else{
+            //Obtiene identificares
+            $ticketId = $_GET['ticketId'];
+            $equipoId = $_GET['equipoId'];
+            //Instancia de la clase modelo
+            $model = new TicketModel();
+            //Llama metodo para guardar respuesta
+            $res = $model->saveAnswer($ticketId, $equipoId);
+            if($res){
+                header("Location: " . $this->config->get('URL') . "");
+            }else{
+                echo 'Error al guardar el dato';
+            }
+        }
+
     }
+
 }
 
 ?>
