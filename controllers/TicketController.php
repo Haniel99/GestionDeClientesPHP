@@ -33,7 +33,7 @@ class TicketController
             empty($_POST['correo']) ||
             empty($_POST['message'])
         ) {
-            header("Location: " . $this->config->get('URL') . "client");
+            header("Location: " . $this->config->get('URL') . "ticket?msg=true");
             exit(); // Terminar la ejecución del script después de redirigir
         }
 
@@ -46,7 +46,7 @@ class TicketController
         $tipo = $_GET['type'];
         // Verificar si algún campo está vacío después de realizar la asignación
         if (empty($motivo) || empty($nombre) || empty($telefono) || empty($rut) || empty($correo) || empty($mensaje)) {
-            header("Location: " . $this->config->get('URL') . "client");
+            header("Location: " . $this->config->get('URL') . "ticket?msg=true");
             exit();
         }
 
@@ -66,9 +66,9 @@ class TicketController
         $model = new TicketModel();
         $res = $model->saveTicket($data);
         if ($res) {
-            header("Location:" . $this->config->get('URL') . "ticket?alert=&sad3A");
+            header("Location:" . $this->config->get('URL') . "ticket?alert=1");
         } else {
-            header("Location:" . $this->config->get('URL') . "ticket?alert=$31dd3");
+            header("Location:" . $this->config->get('URL') . "ticket?alert=err");
         }
     }
 
@@ -113,12 +113,17 @@ class TicketController
             //Obtiene identificares
             $ticketId = $_GET['ticketId'];
             $equipoId = $_GET['equipoId'];
+            $tipo = $_GET['tipo'];
             //Instancia de la clase modelo
             $model = new TicketModel();
             //Llama metodo para guardar respuesta
             $res = $model->saveAnswer($ticketId, $equipoId);
             if($res){
-                header("Location: " . $this->config->get('URL') . "");
+                if($tipo == 'consulta'){
+                    header("Location: " . $this->config->get('URL') . "ticket/reviewQueries?msg=true");
+                }else{
+                    header("Location: " . $this->config->get('URL') . "ticket/reviewClaims?msg=true");
+                }
             }else{
                 echo 'Error al guardar el dato';
             }

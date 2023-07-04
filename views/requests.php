@@ -16,8 +16,18 @@
         </div>
     </head>
     <main class="container mx-auto">
-        <div class="rounded bg-slate-100 container p-8 justify-center  flex">
-            <form id="container" action="ticket/sendDatasTickets?type=consulta" method="POST" class="flex flex-col">
+        <div class="rounded bg-slate-100 container p-8 justify-center  flex flex-col">
+        <?php if (isset($_GET['msg']) && !empty($_GET['msg'])) {
+                echo '<h2 class = "text-xl p-3 bg-red-200 rounded mb-3 w-full mx-20 text-center text-red-600" >Llene todo los campos</h2>';
+            }
+            if(isset($_GET['alert']) && !empty($_GET['alert'])){
+                if($_GET['alert'] == 1){
+                    echo '<h2 class = "text-xl p-3 bg-green-200 rounded mb-3 w-full mx-20 text-center text-green-600" >Datos guardados correctamente</h2>';
+                }else{
+                    echo '<h2 class = "text-xl p-3 bg-red-200 rounded mb-3 w-full mx-20 text-center text-red-600" >Error al guardar los datos</h2>';
+                }
+            } ?>    
+        <form id="container" action="ticket/sendDatasTickets?type=consulta" method="POST" class="flex flex-col">
                 <div class=" flex gap-8">
                     <div class="flex-rows ">
                         <div class="my-2">

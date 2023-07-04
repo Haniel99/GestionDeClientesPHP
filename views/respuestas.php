@@ -21,8 +21,7 @@
         <?php
         foreach ($this->data as $key => $value) {
         ?>
-            <form class="flex bg-slate-100 container my-8 p-5" action="http://localhost/GestionDeClientesPHP/ticket/answerTicket?ticketId=<?php echo $value['ticket_id']."&equipoId=5"?>" method="POST">
-
+            <form class="flex bg-slate-100 container my-8 p-5" action="http://localhost/GestionDeClientesPHP/ticket/answerTicket?ticketId=<?php echo $value['ticket_id']."&equipoId=5&tipo=".$value['categoria'].""?>" method="POST">
                 <div class="flex flex-col w-1/3 h-full p-3">
                     <div class="flex flex-col mb-5">
                         <label class="font-sans text-neutral-800 leading-normal text-xl" for="motivo">Nombre completo</label>

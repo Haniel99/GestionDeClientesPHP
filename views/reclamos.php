@@ -26,6 +26,9 @@
     <main class="container m-auto">
         <div class="rounded bg-slate-100 container my-8 p-5  justify-center items-center flex flex-col ">
             <p class="text-xl font-sans ">Lista de reclamos</p>
+            <?php if (isset($_GET['msg']) && !empty($_GET['msg'])) {
+                echo '<h2 class = "text-xl p-3 bg-green-200 rounded mb-3 w-full mx-20 text-center text-green-600" >Guardado correctamente</h2>';
+            } ?>
             <?php if (empty($this->data)) { ?>
                 <h2>No hay datos</h2>
             <?php }else {?>
