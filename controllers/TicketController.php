@@ -36,7 +36,7 @@ class TicketController
             empty($_POST['correo']) ||
             empty($_POST['message'])
         ) {
-            header("Location: " . $this->config->get('URL') . "ticket?msg=true");
+            header("Location: " . $this->config->get('URL') . "ticket/ingresarTicket?msg=true");
             exit(); // Terminar la ejecución del script después de redirigir
         }
 
@@ -49,7 +49,7 @@ class TicketController
         $tipo = $_GET['type'];
         // Verificar si algún campo está vacío después de realizar la asignación
         if (empty($motivo) || empty($nombre) || empty($telefono) || empty($rut) || empty($correo) || empty($mensaje)) {
-            header("Location: " . $this->config->get('URL') . "ticket?msg=true");
+            header("Location: " . $this->config->get('URL') . "ticket/ingresarTicket?msg=true");
             exit();
         }
 
@@ -69,9 +69,9 @@ class TicketController
         $model = new TicketModel();
         $res = $model->guardarTicket($data);
         if ($res) {
-            header("Location:" . $this->config->get('URL') . "ticket?alert=1");
+            header("Location:" . $this->config->get('URL') . "ticket/ingresarTicket?alert=1");
         } else {
-            header("Location:" . $this->config->get('URL') . "ticket?alert=err");
+            header("Location:" . $this->config->get('URL') . "ticket/ingresarTicket?alert=err");
         }
     }
 
@@ -123,9 +123,9 @@ class TicketController
             $res = $model->guardarRespuesta($ticketId, $equipoId);
             if($res){
                 if($tipo == 'consulta'){
-                    header("Location: " . $this->config->get('URL') . "ticket/reviewQueries?msg=true");
+                    header("Location: " . $this->config->get('URL') . "ticket/revisarConsultas?msg=true");
                 }else{
-                    header("Location: " . $this->config->get('URL') . "ticket/reviewClaims?msg=true");
+                    header("Location: " . $this->config->get('URL') . "ticket/revisarReclamos?msg=true");
                 }
             }else{
                 echo 'Error al guardar el dato';
