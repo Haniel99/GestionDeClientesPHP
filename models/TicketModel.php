@@ -42,9 +42,9 @@ class TicketModel extends MySql
                 return false;
             }
             //Agregar guardar datos del ticket
-            /*$sql = "insert into ticket values (NULL,'" . $this->descripcion . "','" . $this->estado . "', '" . $this->fechaApertura . "', NULL, '" . $this->tipo . "', null," . $this->clientId . ", NULL,' ".$this->motivo."' )";
+            $sql = "insert into ticket values (NULL,'" . $this->descripcion . "','" . $this->estado . "', '" . $this->fechaApertura . "', NULL, '" . $this->tipo . "', null," . $this->clientId . ", NULL,' ".$this->motivo."' )";
             //Query
-            $this->query($sql);*/
+            $this->query($sql);
             return true;
         } catch (\Throwable $th) {
             return false;
@@ -73,6 +73,7 @@ class TicketModel extends MySql
     }
     public function getTicketData($ticketId){
         try {
+            
             //Consulta para obtener los datos del ticket
             $sql = "select t.ticket_id, p.nombre,p.apellido, p.run, p.email, p.telefono, t.motivo, t.descripcion, t.categoria from ticket t join persona p on(t.cliente_id = p.persona_id) where t.ticket_id  = ".$ticketId."";
             //Consulta 
