@@ -27,7 +27,7 @@ class TicketModel extends MySql
             //throw $th;
         }
     }
-    public function saveTicket($data)
+    public function guardarTicket($data)
     {
         //Se definen los atributos del ticket
         $this->motivo = $data['motivo'];
@@ -51,7 +51,7 @@ class TicketModel extends MySql
         }
     }
 
-    public function getQueries()
+    public function obtenerConsultas()
     {   
             try {
                 $sql = "select * from ticket where categoria = 'consulta' and estado ='En progreso' ";
@@ -61,7 +61,7 @@ class TicketModel extends MySql
                 throw $th;
             }
     }
-    public function getClaims()
+    public function obtenerReclamo()
     {   
             try {
                 $sql = "select * from ticket where categoria = 'reclamo' and estado = 'En progreso'";
@@ -71,7 +71,7 @@ class TicketModel extends MySql
                 throw $th;
             }
     }
-    public function getTicketData($ticketId){
+    public function obtenerDatosTicket($ticketId){
         try {
             //Consulta para obtener los datos del ticket
             $sql = "select t.ticket_id, p.nombre,p.apellido, p.run, p.email, p.telefono, t.motivo, t.descripcion, t.categoria from ticket t join persona p on(t.cliente_id = p.persona_id) where t.ticket_id  = ".$ticketId."";
@@ -82,7 +82,7 @@ class TicketModel extends MySql
             return [ "status" => false];
         }
     }
-    public function saveAnswer($ticketId, $equipoId)
+    public function guardarRespuesta($ticketId, $equipoId)
     {
         try {
             //
