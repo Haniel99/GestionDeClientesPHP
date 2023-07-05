@@ -27,7 +27,7 @@
                     echo '<h2 class = "text-xl p-3 bg-red-200 rounded mb-3 w-full mx-20 text-center text-red-600" >Error al guardar los datos</h2>';
                 }
             } ?>    
-        <form id="container" action="ticket/sendDatasTickets?type=consulta" method="POST" class="flex flex-col">
+        <form id="container" action="ticket/guardarDatoTicket?type=consulta" method="POST" class="flex flex-col">
                 <div class=" flex gap-8">
                     <div class="flex-rows ">
                         <div class="my-2">

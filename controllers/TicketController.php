@@ -14,9 +14,12 @@ class TicketController
 
     public function render()
     {
-        $this->views->show('requests.php', []);
+        $this->views->show('verConsultas.php', []);
     }
-    public function sendDatasTickets()
+    public function ingresarTicket(){
+        $this->views->show('requests.php', []);   
+    }
+    public function enviarDatosTicket()
     {
         if (
             !isset($_GET['type']) ||
@@ -64,7 +67,7 @@ class TicketController
 
         //Instancia del modelo
         $model = new TicketModel();
-        $res = $model->saveTicket($data);
+        $res = $model->guardarTicket($data);
         if ($res) {
             header("Location:" . $this->config->get('URL') . "ticket?alert=1");
         } else {
@@ -72,21 +75,21 @@ class TicketController
         }
     }
 
-    public function reviewQueries()
+    public function revisarConsultas()
     {
         $model = new TicketModel();
-        $res = $model->getQueries();
+        $res = $model->obtenerConsultas();
         $this->views->show('consultas.php', $res);
     }
-    public function reviewClaims()
+    public function revisarReclamos()
     {
         $model = new TicketModel();
-        $res = $model->getClaims();
+        $res = $model->obtenerReclamo();
         $this->views->show('reclamos.php', $res);
     }
 
 
-    public function selectTicket()
+    public function seleccionarTicket()
     {
         //Verifica si existe el id del ticket
         if (!isset($_GET['ticket_id']) || empty($_GET['ticket_id'])) {
@@ -95,7 +98,7 @@ class TicketController
             //Obtener id del ticket
             $ticketId = $_GET['ticket_id'];
             $model = new TicketModel();
-            $res = $model->getTicketData($ticketId);
+            $res = $model->obtenerDatosTicket($ticketId);
             if($res['status']){
                 $this->views->show('respuestas.php', $res['response']);
             }else{
@@ -104,7 +107,7 @@ class TicketController
         }
     }
 
-    public function answerTicket()
+    public function responderTicket()
     {
         //Verifica si existe id
         if(!isset($_GET['ticketId']) || !isset($_GET['equipoId']) || empty($_GET['equipoId']) || empty($_GET['ticketId'])){
@@ -117,7 +120,7 @@ class TicketController
             //Instancia de la clase modelo
             $model = new TicketModel();
             //Llama metodo para guardar respuesta
-            $res = $model->saveAnswer($ticketId, $equipoId);
+            $res = $model->guardarRespuesta($ticketId, $equipoId);
             if($res){
                 if($tipo == 'consulta'){
                     header("Location: " . $this->config->get('URL') . "ticket/reviewQueries?msg=true");

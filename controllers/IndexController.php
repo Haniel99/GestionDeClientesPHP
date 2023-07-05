@@ -9,8 +9,8 @@ class IndexController
     }
 
     public function render(){
-        $this->views->show('verConsultas.php', []);
-    }   
+        $this->views->show('index.php', []);
+    }  
 
 }
 ?>

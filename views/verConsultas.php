@@ -12,8 +12,8 @@
 
     <header class=" flex  gap-10  bg-violet-800 ">
             <div class="flex-1 gap-4 w-80 p-4 ">
-                <a class="text-violet-50 font-sans py-2 px-6 border text-xl" href="http://localhost/GestionDeClientesPHP/ticket/reviewQueries">Consultas</a>
-                <a class="text-violet-50 font-sans py-2  px-6 border text-xl" href="http://localhost/GestionDeClientesPHP/ticket/reviewClaims">Reclamos</a>
+                <a class="text-violet-50 font-sans py-2 px-6 border text-xl" href="http://localhost/GestionDeClientesPHP/ticket/revisarConsultas">Consultas</a>
+                <a class="text-violet-50 font-sans py-2  px-6 border text-xl" href="http://localhost/GestionDeClientesPHP/ticket/revisarReclamos">Reclamos</a>
             </div>
             <div class=" p-4 shrink-0  w-40">
                 <h2 class="text-violet-50 font-sans  text-3xl">Responder</h2>
