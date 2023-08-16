@@ -82,9 +82,9 @@
         const text = document.getElementById('message'); //
         const funct = (e) => {
             if (e.target.value === 'consulta') {
-                container.action = 'ticket/sendDatasTickets?type=consulta';
+                container.action = 'ticket/enviarDatosTicket?type=consulta';
             } else {
-                container.action = 'ticket/sendDatasTickets?type=reclamo';
+                container.action = 'ticket/enviarDatosTicket?type=reclamo';
             }
         }
 
